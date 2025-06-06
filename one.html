@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Jenkins-Tomcat Deployment Portal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #f4f4f4;
+    }
+    .container {
+      max-width: 600px;
+      background-color: #fff;
+      padding: 25px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    .section {
+      margin-top: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #0078D4;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    input[type="file"] {
+      margin-top: 10px;
+    }
+    .status {
+      background-color: #e2e2e2;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Jenkins-Tomcat Deployment Dashboard</h2>
+
+    <div class="section">
+      <h3>Upload WAR File</h3>
+      <input type="file" id="warFile" accept=".war">
+      <br>
+      <button onclick="uploadWar()">Deploy</button>
+      <div id="uploadStatus" class="status">Waiting for file upload...</div>
+    </div>
+
+    <div class="section">
+      <h3>Restart Tomcat</h3>
+      <button onclick="restartTomcat()">Restart</button>
+      <div id="restartStatus" class="status">Tomcat is running</div>
+    </div>
+
+    <div class="section">
+      <h3>Service Status</h3>
+      <div class="status">Jenkins: ✅ Running</div>
+      <div class="status">Tomcat: ✅ Running</div>
+    </div>
+  </div>
+
+  <script>
+    function uploadWar() {
+      const file = document.getElementById('warFile').files[0];
+      if (!file) {
+        alert('Please select a WAR file to upload.');
+        return;
+      }
+      // Mock upload
+      document.getElementById('uploadStatus').innerText = `Uploaded ${file.name} successfully (simulated)`;
+    }
+
+    function restartTomcat() {
+      document.getElementById('restartStatus').innerText = 'Restarting Tomcat...';
+      setTimeout(() => {
+        document.getElementById('restartStatus').innerText = 'Tomcat restarted successfully.';
+      }, 2000); // Mock delay
+    }
+  </script>
+</body>
+</html>
